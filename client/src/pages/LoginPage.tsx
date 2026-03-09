@@ -28,7 +28,7 @@ export default function LoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
             <Lock className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Payment Tracker</h1>
+          <h1 className="text-2xl font-bold text-foreground">Client Ledger</h1>
           <p className="text-muted-foreground mt-1">Sign in to your employee account</p>
         </div>
 
@@ -78,15 +78,6 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <div className="mt-6 pt-4 border-t border-border">
-            <p className="text-xs text-muted-foreground text-center mb-2">Demo accounts:</p>
-            <div className="grid grid-cols-2 gap-1 text-xs text-muted-foreground">
-              <span>admin@company.com</span><span>admin123</span>
-              <span>omar@company.com</span><span>pass123 (accounts)</span>
-              <span>fatma@company.com</span><span>pass123 (collector)</span>
-              <span>youssef@company.com</span><span>pass123 (viewer)</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
