@@ -8,6 +8,7 @@ import {
 import { useState } from 'react';
 import { ROLE_LABELS } from '@/types';
 import { Button } from '@/components/ui/button';
+import Footer from '@/components/Footer';
 
 interface NavItem {
   label: string;
@@ -105,7 +106,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 min-h-screen">
+      <main className="flex-1 min-h-screen flex flex-col">
         {/* Mobile header */}
         <header className="lg:hidden sticky top-0 z-30 bg-background/80 backdrop-blur-sm border-b border-border p-3 flex items-center gap-3">
           <button onClick={() => setSidebarOpen(true)} className="p-2 rounded-lg hover:bg-muted">
@@ -114,7 +115,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <h1 className="text-sm font-semibold text-foreground">PayTracker</h1>
         </header>
 
-        <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto">
+        <div className="flex-1 w-full p-4 md:p-6 lg:p-8 max-w-7xl mx-auto">
           {isLoadingGlobalData ? (
             <div className="flex flex-col items-center justify-center h-[50vh] gap-3 text-muted-foreground animate-fade-in">
               <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -124,6 +125,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             children
           )}
         </div>
+
+        <Footer />
       </main>
     </div>
   );
