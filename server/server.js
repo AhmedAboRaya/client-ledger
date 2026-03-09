@@ -1,8 +1,8 @@
 /**
  * server.js
- *
+ * 
  * Main Express backend for Client Ledger
- * Ready for Vercel deployment
+ * Ready for Vercel deployment with proper CORS
  */
 
 const express = require('express');
@@ -22,8 +22,28 @@ connectDB();
 
 const app = express();
 
+// CORS configuration
+const allowedOrigins = [
+  'http://localhost:8080',
+  'https://client-ledger-abo-raya.vercel.app',
+  'https://client-ledger-abo-raya-git-main-ahmed-aborayas-projects.vercel.app',
+  'https://client-ledger-abo-raya-lpnz5o0oh-ahmed-aborayas-projects.vercel.app'
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `CORS policy: The origin ${origin} is not allowed.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true // if you use cookies/auth headers
+}));
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Logging in development
